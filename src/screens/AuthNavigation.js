@@ -24,6 +24,9 @@ import WelcomeScreen from './WelcomeScreen';
 import HomeScreen from './HomeScreen';
 import UserProfile from './UserProfile';
 import ProductScreen from './ProductScreen';
+import UserCart from './UserCart'
+import PlaceOrder from './PlaceOrder';
+import TrackOrder from './TrackOrder';
 const Stack = createNativeStackNavigator();
 
 function  AuthNavigation() {
@@ -62,6 +65,21 @@ function  AuthNavigation() {
       <Stack.Screen
         name="Product"
         component={ProductScreen}
+        options={{ headerShown: false }}
+      />
+       <Stack.Screen
+        name="Cart"
+        component={UserCart}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Place order"
+        component={PlaceOrder}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Track order"
+        component={TrackOrder}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

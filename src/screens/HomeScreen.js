@@ -7,6 +7,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import { colors } from '../globals/style'
 import {firebase} from '../firebase/FirebaseConfig'
 import CardSlider from '../components/CardSlider'
+import BottomNav from '../components/BottomNav'
 //import AntDesign from 'react-native-vector-icons/AntDesign'
 const HomeScreen = ({navigation}) => {
   const [foodData,setfoodData]=useState([]);
@@ -27,9 +28,13 @@ const HomeScreen = ({navigation}) => {
   },[foodData])
   //console.log("FoodData",foodData);
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
         <StatusBar/>
         <HomeHeadNav navigation={navigation}/>
+        <View style={styles.bottomnav}>
+          <BottomNav navigation={navigation}/>
+        </View>
+        <ScrollView>
         <View style={styles.searchbox}>
         <AntDesign name="search1" size={24}  style={styles.searchicon}/>
         <TextInput style={styles.textinput} placeholder='Search'
@@ -58,7 +63,8 @@ const HomeScreen = ({navigation}) => {
         <CardSlider  data={foodData} title={"Today's Special"} navigation={navigation}/>
         <CardSlider  data={nonVegData} title={"NonVeg Love"} navigation={navigation}/>
         <CardSlider  data={vegData} title={"Veg Hunger"} navigation={navigation}/>
-    </ScrollView>
+      </ScrollView>
+    </View>
   )
 }
 
@@ -108,5 +114,12 @@ const styles = StyleSheet.create({
     marginLeft:10,
     fontSize:15,
     color:colors.text1
+  },
+  bottomnav:{
+    position:'absolute',
+    bottom:0,
+    width:'100%',
+    backgroundColor:colors.col1,
+    zIndex:20
   }
 })

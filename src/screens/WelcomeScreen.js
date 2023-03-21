@@ -31,7 +31,7 @@ const WelcomeScreen = ({navigation}) => {
   }
   return (
     <View style={styles.container}>
-        <Text style={styles.title}>Welcome to Foodie</Text>
+        <Text style={styles.title}>Welcome to FoodOx</Text>
         <View style={styles.logout}>
         <Image
         style={styles.logo}

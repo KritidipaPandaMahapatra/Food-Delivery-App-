@@ -4,6 +4,7 @@ import { veg,nonveg ,colors } from '../globals/style'
 export default function CardSlider({title,data,navigation}) {
   //console.log("Fetch Data::--",data)
  const openProductpage=(item)=>{
+  console.log("item-->",item)
   navigation.navigate('Product',item)
  }
   return (
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
   cardimage:{
     width:'100%',
     height:200,
-    borderRadius:10
+    borderRadius:10,
   },
   s2:{
     flexDirection:'row',

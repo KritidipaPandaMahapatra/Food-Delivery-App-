@@ -18,7 +18,8 @@ module.exports={
         justifyContent:'center',
         elevation:10,
         color:'white',
-        marginBottom:10
+        marginBottom:10,
+        marginVertical:15
     },
     hr80:{
         width:'80%',
@@ -57,4 +58,30 @@ module.exports={
         left:0,
         zindex:10
     },
+    indecbtn:{
+        backgroundColor:'red',
+        alignItems:'center',
+        justifyContent:'center',
+        borderRadius:50,
+        elevation:10,
+        padding:10,
+        color:'white',
+        fontSize:20,
+        fontWeight:'bold'
+    },
+    indecbtninput:{
+        backgroundColor:'white',
+        alignItems:'center',
+        justifyContent:'center',
+        elevation:10,
+        padding:10,
+        width:50,
+        marginHorizontal:10,
+        fontSize:20
+    },
+    indecout:{
+       flexDirection:'row',
+       alignItems:'center',
+       margin:10
+    }
 }
