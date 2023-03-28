@@ -7,6 +7,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import Feather from 'react-native-vector-icons/Feather'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import {firebase} from '../firebase/FirebaseConfig'
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 const SignupScreen = ({navigation}) => {
     const [namefocus,setNamefocus]=useState(false)
     const [phonefocus,setPhonefocus]=useState(false)
@@ -83,6 +84,22 @@ const SignupScreen = ({navigation}) => {
        console.log("sign up system error",error.message);
        }
     }
+    async function onGoogleButtonPress() {
+        console.log("Google login")
+        try{
+        // Check if your device supports Google Play
+        await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+        // Get the users ID token
+        const { idToken } = await GoogleSignin.signIn();
+      
+        // Create a Google credential with the token
+        const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+      
+        // Sign-in the user with the credential
+        return auth().signInWithCredential(googleCredential);
+      }catch(error){
+   console.log("GOOGLE ERROR",error)
+      }}
   return (
     <ScrollView>
         {successmsg == null?
@@ -165,10 +182,13 @@ const SignupScreen = ({navigation}) => {
     <Text style={{color:colors.col1,fontSize:titles.btntxt,fontWeight:'bold'}} >Sign up</Text>
     </TouchableOpacity>
     <Text style={styles.forgot}>Forgot Password?</Text>
+    { 
+    Platform.OS=== 'android' ?(
+        <>
     <Text style={styles.or}>OR</Text>
     <Text style={styles.gftxt}>Sign In With</Text>
     <View style={styles.gf}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => onGoogleButtonPress().then(() => navigation.navigate('Welcome'))}>
             <View style={styles.gficon}>
                 <AntDesign name="google" size={24} color='#EA4335'/>
             </View>
@@ -178,7 +198,8 @@ const SignupScreen = ({navigation}) => {
                 <FontAwesome5 name="facebook-f" size={24} color='#4267B2'/>
             </View>
         </TouchableOpacity>
-    </View>
+    </View></>
+    ): null}
     <View style={hr80}/>
     {/* <View style={{marginVertical:10}}>
     <Text>Don't have an account?

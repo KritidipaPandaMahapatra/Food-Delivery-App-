@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
-import { View ,Text,StyleSheet ,TextInput, TouchableOpacity} from 'react-native'
+import { View ,Text,StyleSheet ,TextInput, TouchableOpacity, Platform} from 'react-native'
 import {colors, titles ,btn1 ,hr80} from '../globals/style'
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Octicons from 'react-native-vector-icons/Octicons'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import {firebase} from '../firebase/FirebaseConfig'
+//import auth from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+
 const LoginScreen = ({navigation}) => {
     const [emailfocus,setEmailfocus]=useState(false)
     const [passwordfocus,setPasswordfocus]=useState(false)
@@ -31,6 +34,22 @@ const LoginScreen = ({navigation}) => {
             }
         })
     }
+    async function onGoogleButtonPress() {
+        console.log("Google login")
+        try{
+        // Check if your device supports Google Play
+        await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+        // Get the users ID token
+        const { idToken } = await GoogleSignin.signIn();
+      
+        // Create a Google credential with the token
+        const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+      
+        // Sign-in the user with the credential
+        return auth().signInWithCredential(googleCredential);
+      }catch(error){
+   console.log("GOOGLE ERROR",error)
+      }}
   return (
     <View style={styles.container}>
     <Text style={styles.head1}>Sign In</Text>
@@ -59,20 +78,21 @@ const LoginScreen = ({navigation}) => {
     <Text style={{color:colors.col1,fontSize:titles.btntxt,fontWeight:'bold'}} >Sign in</Text>
     </TouchableOpacity>
     <Text style={styles.forgot}>Forgot Password?</Text>
-    <Text style={styles.or}>OR</Text>
-    <Text style={styles.gftxt}>Sign In With</Text>
-    <View style={styles.gf}>
-        <TouchableOpacity>
-            <View style={styles.gficon}>
-                <AntDesign name="google" size={24} color='#EA4335'/>
-            </View>
-        </TouchableOpacity>
-        <TouchableOpacity>
-            <View style={styles.gficon}>
-                <FontAwesome5 name="facebook-f" size={24} color='#4267B2'/>
-            </View>
-        </TouchableOpacity>
-    </View>
+    { 
+    Platform.OS=== 'android' ?(
+    <><Text style={styles.or}>OR</Text><Text style={styles.gftxt}>Sign In With</Text><View style={styles.gf}>
+                  <TouchableOpacity onPress={() => onGoogleButtonPress().then(() => navigation.navigate('Welcome'))}>
+                      <View style={styles.gficon}>
+                          <AntDesign name="google" size={24} color='#EA4335' />
+                      </View>
+                  </TouchableOpacity>
+                  <TouchableOpacity>
+                      <View style={styles.gficon}>
+                          <FontAwesome5 name="facebook-f" size={24} color='#4267B2' />
+                      </View>
+                  </TouchableOpacity>
+              </View></>
+    ): null}
     <View style={hr80}/>
     <Text>Don't have an account?
         <Text style={styles.signup} onPress={() => navigation.navigate('Signup')}> Sign Up</Text> 

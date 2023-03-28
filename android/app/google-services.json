@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "337002462448-frn14q2uug1elspn8cspd25vl0cdfhkv.apps.googleusercontent.com",
+          "client_id": "337002462448-bkntnrbgvdq8nb6rltsajj5gp28q8p9r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.foodapp",
+            "certificate_hash": "20fc4342c192f6dccb4383bbadcffc0b6f087225"
+          }
+        },
+        {
+          "client_id": "337002462448-16bsdbnafcl6p0e86h4896c03g3asc2g.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,7 +35,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "337002462448-frn14q2uug1elspn8cspd25vl0cdfhkv.apps.googleusercontent.com",
+              "client_id": "337002462448-16bsdbnafcl6p0e86h4896c03g3asc2g.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

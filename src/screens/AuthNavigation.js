@@ -17,6 +17,7 @@
 //   )
 // }
 import * as React from 'react';
+import { useEffect } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './LoginScreen';
 import SignupScreen from './SignupScreen';
@@ -27,9 +28,15 @@ import ProductScreen from './ProductScreen';
 import UserCart from './UserCart'
 import PlaceOrder from './PlaceOrder';
 import TrackOrder from './TrackOrder';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 const Stack = createNativeStackNavigator();
 
 function  AuthNavigation() {
+  useEffect(()=>{
+    GoogleSignin.configure({
+      webClientId: '337002462448-frn14q2uug1elspn8cspd25vl0cdfhkv.apps.googleusercontent.com',
+    });
+  },[])
   return (
     <Stack.Navigator>
        <Stack.Screen
