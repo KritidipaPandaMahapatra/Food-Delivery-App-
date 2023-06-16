@@ -1,12 +1,14 @@
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import AuthNavigation from './screens/AuthNavigation';
-
+import {SafeAreaView} from 'react-native';
 export default function RootNavigation() {
   return (
-    <NavigationContainer>
-      <AuthNavigation/>
-    </NavigationContainer>
+    <SafeAreaView style={{flex: 1}}>
+      <NavigationContainer>
+        <AuthNavigation />
+      </NavigationContainer>
+    </SafeAreaView>
   );
 }
 // import * as React from 'react';

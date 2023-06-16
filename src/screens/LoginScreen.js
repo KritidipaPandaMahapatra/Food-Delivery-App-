@@ -34,6 +34,7 @@ const LoginScreen = ({navigation}) => {
             }
         })
     }
+    
     async function onGoogleButtonPress() {
         console.log("Google login")
         try{
@@ -79,7 +80,7 @@ const LoginScreen = ({navigation}) => {
     </TouchableOpacity>
     <Text style={styles.forgot}>Forgot Password?</Text>
     { 
-    Platform.OS=== 'android' ?(
+    Platform.OS== 'android' ?(
     <><Text style={styles.or}>OR</Text><Text style={styles.gftxt}>Sign In With</Text><View style={styles.gf}>
                   <TouchableOpacity onPress={() => onGoogleButtonPress().then(() => navigation.navigate('Welcome'))}>
                       <View style={styles.gficon}>

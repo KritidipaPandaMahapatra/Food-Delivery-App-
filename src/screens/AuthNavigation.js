@@ -17,77 +17,78 @@
 //   )
 // }
 import * as React from 'react';
-import { useEffect } from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {useEffect} from 'react';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginScreen from './LoginScreen';
 import SignupScreen from './SignupScreen';
 import WelcomeScreen from './WelcomeScreen';
 import HomeScreen from './HomeScreen';
 import UserProfile from './UserProfile';
 import ProductScreen from './ProductScreen';
-import UserCart from './UserCart'
+import UserCart from './UserCart';
 import PlaceOrder from './PlaceOrder';
 import TrackOrder from './TrackOrder';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 const Stack = createNativeStackNavigator();
 
-function  AuthNavigation() {
-  useEffect(()=>{
+function AuthNavigation() {
+  useEffect(() => {
     GoogleSignin.configure({
-      webClientId: '337002462448-frn14q2uug1elspn8cspd25vl0cdfhkv.apps.googleusercontent.com',
+      webClientId:
+        '337002462448-frn14q2uug1elspn8cspd25vl0cdfhkv.apps.googleusercontent.com',
     });
-  },[])
+  }, []);
   return (
     <Stack.Navigator>
-       <Stack.Screen
+      <Stack.Screen
         name="Welcome"
         component={WelcomeScreen}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="Login"
         component={LoginScreen}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="DashBoard"
         component={HomeScreen}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="Signup"
         component={SignupScreen}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
-       <Stack.Screen
+      <Stack.Screen
         name="Dashboard"
         component={HomeScreen}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="UserProfile"
         component={UserProfile}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="Product"
         component={ProductScreen}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
-       <Stack.Screen
+      <Stack.Screen
         name="Cart"
         component={UserCart}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="Place order"
         component={PlaceOrder}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="Track order"
         component={TrackOrder}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
     </Stack.Navigator>
   );
